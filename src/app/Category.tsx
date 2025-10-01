@@ -6,7 +6,6 @@ import IIcon from "react-native-vector-icons/Ionicons";
 import { images } from "assets/images";
 import { Dimensions, ScrollView } from "react-native";
 import InspiredChoices from "../../components/InspiredChoices";
-import ProductReview from "components/ProductReview";
 import FIcon from "react-native-vector-icons/Feather";
 
 const screenWidth = Dimensions.get("screen").width;
@@ -309,15 +308,27 @@ const Category = () => {
             renderItem={({
               item: { id, image, productName, price, stock },
             }) => {
-              console.log(productName, price, stock, image);
               return (
-                <ProductReview
-                  key={id}
-                  image={image}
-                  price={price}
-                  stock={stock}
-                  productName={productName}
-                />
+                <View className={`h-[300px] w-[50%]`}>
+                  <View className="flex-1 flex-col justify-center">
+                    <View className="h-3/4 p-2">
+                      <Image
+                        className="w-full h-full bg-gray-100"
+                        source={images.engine}
+                        resizeMode="contain"
+                      />
+                    </View>
+                    <View className="flex-1 px-2">
+                      <Text numberOfLines={1}>{productName}</Text>
+                      <Text className="font-semibold text-xl" numberOfLines={1}>
+                        {price}
+                      </Text>
+                      <Text className="text-xs font-medium">
+                        {stock} peiece (MQQ)
+                      </Text>
+                    </View>
+                  </View>
+                </View>
               );
             }}
           />
